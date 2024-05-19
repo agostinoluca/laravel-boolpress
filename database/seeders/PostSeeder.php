@@ -15,11 +15,12 @@ class PostSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $post = new Post();
             $post->title = $faker->words(3, true);
             $post->content = $faker->text();
-            $post->slug = Str::of($post->title)->slug()('-');
+            $post->slug = Str::of($post->title)->slug('-');
+            $post->cover_image = $faker->imageUrl();
             $post->save();
         }
     }
